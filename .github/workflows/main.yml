@@ -40,7 +40,7 @@ jobs:
           rm -f kustomize
       
       - name: Git Commit/Push Changes
-        uses: actions-x/commit@v2
+        uses: actions-x/commit@v6
         if: ${{ github.event.inputs.image }}
         with:
           message: "kustomize set image to ${{ github.event.client_payload.image }}:${{ github.event.client_payload.sha-tag }}"
