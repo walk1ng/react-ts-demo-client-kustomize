@@ -6,4 +6,4 @@ resources:
 - service.yaml
 images:
 - name: walk1ng/react-ts-demo-client
-  newTag: 4e3c18c73f15a59d7ad924682949ca3143025ab7
+  newTag: 1bcb0bacfe1e1d295d094361481288a72784234a
