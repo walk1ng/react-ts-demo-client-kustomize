@@ -27,10 +27,6 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Step 1
-        run: echo "Param1: ${{ github.event.client_payload.image }}"
-      - name: Step 2
-        run: echo "Param2: ${{ github.event.client_payload.sha-tag }}"
         
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
