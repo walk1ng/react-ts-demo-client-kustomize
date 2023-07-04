@@ -4,9 +4,9 @@ name: CI
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
-  push:
-    branches: [ master ]
+  repository_dispatch:
+    types:    # 可以自定义事件类型
+      - trigger-b
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -27,19 +27,24 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - name: Step 1
+        run: echo "Param1: ${{ github.event.client_payload.image }}"
+      - name: Step 2
+        run: echo "Param2: ${{ github.event.client_payload.sha-tag }}"
+        
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-        if: ${{ github.event.inputs.image }}
+        if: ${{ github.event.client_payload.image }}
       
       - name: kustomize edit
-        if: ${{ github.event.inputs.image }}
+        if: ${{ github.event.client_payload.image }}
         run: |
           curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
-          kustomize edit set image ${{ github.event.inputs.image }}:${{ github.event.inputs.sha-tag }}
+          kustomize edit set image ${{ github.event.client_payload.image }}:${{ github.event.client_payload.sha-tag }}
           rm -f kustomize
       
       - name: Git Commit/Push Changes
         uses: actions-x/commit@v2
         if: ${{ github.event.inputs.image }}
         with:
-          message: "kustomize set image to ${{ github.event.inputs.image }}:${{ github.event.inputs.sha-tag }}"
+          message: "kustomize set image to ${{ github.event.client_payload.image }}:${{ github.event.client_payload.sha-tag }}"
