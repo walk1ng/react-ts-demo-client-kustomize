@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-demo-client
+  namespace: react-demo
+spec:
+  selector:
+    matchLabels:
+      app: react-demo-client
+  template:
+    metadata:
+      labels:
+        app: react-demo-client
+    spec:
+      containers:
+      - name: react-demo-client
+        image: walk1ng/react-ts-demo-client:v1
+        ports:
+        - containerPort: 7070
