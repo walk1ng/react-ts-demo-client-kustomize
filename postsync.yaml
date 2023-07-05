@@ -6,12 +6,11 @@ metadata:
     argocd.argopro.io/hook: PostSync
     argocd.argopro.io/hook-delete-policy: HookSucceeded
 spec:
-  ttlSecondsAfterFinished: 100
   template:
     spec:
       containers:
       - name: cleanup
         image: busybox
         imagePullPolicy: IfNotPresent
-        command: ["sleep", "20"]
+        command: ["sleep", "5"]
       restartPolicy: Never
