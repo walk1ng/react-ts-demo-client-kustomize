@@ -4,6 +4,7 @@ resources:
 - namespace.yaml
 - deployment.yaml
 - service.yaml
+- postsync.yaml
 images:
 - name: walk1ng/react-ts-demo-client
   newTag: 1bcb0bacfe1e1d295d094361481288a72784234a
