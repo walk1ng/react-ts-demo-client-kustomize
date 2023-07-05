@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: react-demo-hook-
+  annotations:
+    argocd.argopro.io/hook: PreSync
+    argocd.argopro.io/hook-delete-policy: BeforeHookCreation
+spec:
+  ttlSecondsAfterFinished: 100
+  template:
+    spec:
+      containers:
+      - name: holdon
+        image: busybox
+        imagePullPolicy: IfNotPresent
+        command: ["sleep",  "5"]
+      restartPolicy: Never
