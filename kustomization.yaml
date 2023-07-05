@@ -4,6 +4,7 @@ resources:
 - namespace.yaml
 - deployment.yaml
 - service.yaml
+- presync.yaml
 - postsync.yaml
 images:
 - name: walk1ng/react-ts-demo-client
