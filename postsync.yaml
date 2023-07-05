@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: postsync-hook
+  annotations:
+    argocd.argopro.io/hook: PostSync
+    argocd.argopro.io/hook-delete-policy: HookSucceeded
+spec:
+  ttlSecondsAfterFinished: 600
+  template:
+    spec:
+      containers:
+      - name: cleanup
+        image: busybox
+        imagePullPolicy: IfNotPresent
+        command: ["echo",  "post sync", "&&", "sleep", "20"]
+      restartPolicy: Never
