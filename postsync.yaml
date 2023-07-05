@@ -6,7 +6,7 @@ metadata:
     argocd.argopro.io/hook: PostSync
     argocd.argopro.io/hook-delete-policy: HookSucceeded
 spec:
-  ttlSecondsAfterFinished: 600
+  ttlSecondsAfterFinished: 100
   template:
     spec:
       containers:
