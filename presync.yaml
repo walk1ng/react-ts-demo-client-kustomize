@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  generateName: react-demo-hook-
+  name: presync-hook
   annotations:
     argocd.argopro.io/hook: PreSync
     argocd.argopro.io/hook-delete-policy: BeforeHookCreation
