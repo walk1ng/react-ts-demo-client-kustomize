@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sync-hook
+  annotations:
+    argocd.argopro.io/hook: Sync
+    argocd.argopro.io/hook-delete-policy: BeforeHookCreation
+spec:
+  ttlSecondsAfterFinished: 100
+  template:
+    spec:
+      containers:
+      - name: holdon
+        image: busybox
+        imagePullPolicy: IfNotPresent
+        command: ["echo",  "during sync"]
+      restartPolicy: Never
