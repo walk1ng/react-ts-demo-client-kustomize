@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: syncfail-hook
+  annotations:
+    argocd.argopro.io/hook: SyncFail
+    argocd.argopro.io/hook-delete-policy: BeforeHookCreation
+spec:
+  ttlSecondsAfterFinished: 600
+  template:
+    spec:
+      containers:
+      - name: holdon
+        image: busybox
+        imagePullPolicy: IfNotPresent
+        command: ["echo",  "failed sync"]
+      restartPolicy: Never
