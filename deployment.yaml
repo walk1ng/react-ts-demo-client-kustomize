@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: react-demo-client
-  namespace: react-demo
 spec:
   selector:
     matchLabels:
