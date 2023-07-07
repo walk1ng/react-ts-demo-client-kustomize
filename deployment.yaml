@@ -25,4 +25,4 @@ spec:
             memory: 512Mi
         env:
         - name: API_URL
-          value: react-demo-server.kustomize-react-demo-server-db.svc
+          value: http://react-demo-server.kustomize-react-demo-server-db.svc:8080
