@@ -16,3 +16,13 @@ spec:
         image: walk1ng/react-ts-demo-client:v1
         ports:
         - containerPort: 7070
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 500m
+            memory: 512Mi
+        env:
+        - name: API_URL
+          value: react-demo-server.kustomize-react-demo-server-db.svc
